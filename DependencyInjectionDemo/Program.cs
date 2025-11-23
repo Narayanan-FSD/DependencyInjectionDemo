@@ -1,4 +1,7 @@
 
+using DependencyInjectionDemo.BusinessLayer;
+using DependencyInjectionDemo.DataAccessLayer;
+
 namespace DependencyInjectionDemo
 {
     public class Program
@@ -9,7 +12,16 @@ namespace DependencyInjectionDemo
 
             // Add services to the container.
 
+            //builder.Host.UseDefaultServiceProvider(opt =>
+            //{
+            //    opt.ValidateScopes = true;
+            //});
+
             builder.Services.AddControllers();
+
+            builder.Services.AddTransient<IDataAccessService,DataAccessService>();
+            builder.Services.AddTransient<IBusinessService,BusinessService>();
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

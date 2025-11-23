@@ -1,3 +1,4 @@
+using DependencyInjectionDemo.BusinessLayer;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DependencyInjectionDemo.Controllers
@@ -12,15 +13,19 @@ namespace DependencyInjectionDemo.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IBusinessService _businessService;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IBusinessService businessService)
         {
             _logger = logger;
+            _businessService = businessService;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
+            _businessService.DoBusinessWork();
+
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
