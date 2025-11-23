@@ -1,6 +1,7 @@
 
 using DependencyInjectionDemo.BusinessLayer;
 using DependencyInjectionDemo.DataAccessLayer;
+using DependencyInjectionDemo.Models;
 
 namespace DependencyInjectionDemo
 {
@@ -19,6 +20,7 @@ namespace DependencyInjectionDemo
 
             builder.Services.AddControllers();
 
+            builder.Services.Configure<Constants>(builder.Configuration.GetSection("Constants"));
             builder.Services.AddScoped<IDataAccessService,DataAccessService>();
             builder.Services.AddSingleton<IBusinessService,BusinessService>();
 
