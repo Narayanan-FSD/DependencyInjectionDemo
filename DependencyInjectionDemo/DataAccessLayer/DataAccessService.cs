@@ -4,7 +4,7 @@
     {
         public void DoDataBaseWork()
         {
-          
+            Console.WriteLine("Database Operation");
         }
     }
 }

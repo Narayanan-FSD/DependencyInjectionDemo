@@ -19,8 +19,8 @@ namespace DependencyInjectionDemo
 
             builder.Services.AddControllers();
 
-            builder.Services.AddTransient<IDataAccessService,DataAccessService>();
-            builder.Services.AddTransient<IBusinessService,BusinessService>();
+            builder.Services.AddScoped<IDataAccessService,DataAccessService>();
+            builder.Services.AddSingleton<IBusinessService,BusinessService>();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
