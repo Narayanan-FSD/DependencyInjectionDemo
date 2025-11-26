@@ -1,7 +1,4 @@
-
-using DependencyInjectionDemo.BusinessLayer;
-using DependencyInjectionDemo.DataAccessLayer;
-using DependencyInjectionDemo.Models;
+using DependencyInjectionDemo.Extensions;
 
 namespace DependencyInjectionDemo
 {
@@ -20,9 +17,7 @@ namespace DependencyInjectionDemo
 
             builder.Services.AddControllers();
 
-            builder.Services.Configure<Constants>(builder.Configuration.GetSection("Constants"));
-            builder.Services.AddScoped<IDataAccessService,DataAccessService>();
-            builder.Services.AddSingleton<IBusinessService,BusinessService>();
+            builder.Services.AddApplicationServices(builder.Configuration);
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
